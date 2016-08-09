@@ -1,0 +1,25 @@
+#Challenge from HackerRank.com
+#Create a function that takes in an integer and returns a boolean describing if the integer is a square number
+
+import numpy as np
+
+def is_square(n):
+    ls = np.arange(1,n)
+    bools = []    
+    if n > 0:
+        for i in ls:
+            if i*i == n:
+                bools.append('True')
+            else:   
+                bools.append('False')
+    true = 'True'
+    false = 'False'
+    if true in bools:
+        print('true')
+    else:
+        print('false')
+
+#Test it out:
+is_square(25) #Output: true - correct
+is_square(5) #Output: false - correct
+is_square(-4) #Output: false - correct
