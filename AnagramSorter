@@ -1,0 +1,28 @@
+#From Math U Code Blog:
+#Given a list of words, group them into anagrams. For example given ["tsar", "rat", "tar", "star", "tars", "cheese"] 
+#output [["tsar", "star", "tars"],["rat", "tar"],["cheese"]]
+#although the order in the output does not matter.
+
+#Create the list of anagrams to sort
+anagrams=["tsar", "rat", "TAR", "star", "tars", "cheese"]
+
+#Create a function that sorts the letters in a word alphabetically
+def sort_words(word):
+        return ''.join(sorted(word)) 
+
+
+#Call the sort_words function within the larger function group_words
+#This takes each word in the anagrams set, sorts it, and checks if that sorted value already exists in the result set.
+#If yes, the unsorted word is added to the set with it's anagrams
+#If no, the unsorted word gets put in a new set
+def group_words(words):
+    result = {}
+    for w in anagrams:
+        s = sort_words(w.lower())
+        if s in result:
+            result[s]=result[s].union({w}) #Sahand's final answer involves the OR operator
+        else:
+            result[s] = {w}
+    print result.values()
+    
+group_words(anagrams)
