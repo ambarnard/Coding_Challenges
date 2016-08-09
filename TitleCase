@@ -1,0 +1,18 @@
+######Challenge from CodeWars.com
+#Create a function tha takes 1. the title of a work and 2. a list of minor words that should not be capitalized
+#And outputs the title in title case.
+
+def title_case(title, minor_words):
+    import numpy as np    
+    minor_words2 = np.concatenate([minor_words.split(),
+                                   minor_words.title().split(),
+                                   minor_words.upper().split()],
+                                   axis=0)
+    titleSplit = title.split()
+    finalTitle=[titleSplit[0].title()]
+    for i in titleSplit[1:]:
+        finalTitle.append(i in minor_words2 and i or i.title())
+    return ' '.join(finalTitle)
+
+#Test is out:
+title_case('a clash of KINGS', 'a an the of')
